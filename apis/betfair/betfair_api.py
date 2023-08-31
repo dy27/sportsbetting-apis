@@ -15,9 +15,6 @@ class BetfairAPI():
             "ODDS",
             "LINE"
         ],
-        # "exchangeIds": [
-        #     1
-        # ],
         "productTypes": [
             "EXCHANGE"
         ],
@@ -165,14 +162,6 @@ class BetfairAPI():
             # cardinality = result_dict["cardinality"]
             competition_dict = response_dict["attachments"]["competitions"][comp_id]
             results.append(competition_dict)
-            # results.append(CompetitionResult(
-            #     competition = {
-            #         "id": comp_id,
-            #         "name": competition_dict["name"]
-            #     },
-            #     competitionRegion = None,
-            #     marketCount = cardinality
-            # ))
         return results
     
 
@@ -206,17 +195,6 @@ class BetfairAPI():
             # cardinality = result_dict["cardinality"]
             event_dict = response_dict["attachments"]["events"][event_id]
             results.append(event_dict)
-            # results.append(EventResult(
-            #     event = {
-            #         "id": event_id,
-            #         "name": event_dict["name"],
-            #         "countryCode": event_dict["countryCode"] if "countryCode" in event_dict else None,
-            #         "timezone": event_dict["timezone"],
-            #         "venue": None,
-            #         "openDate": event_dict["openDate"],
-            #     },
-            #     marketCount = cardinality
-            # ))
         return results
     
 
