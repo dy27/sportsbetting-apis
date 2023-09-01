@@ -198,6 +198,37 @@ class BetfairAPI():
         return results
     
 
+    def list_market_types(self, filter: dict = None) -> list[str]:
+        payload_dict = {
+            "filter": self.create_market_filter(),
+            "facets": [
+                {
+                    "type": "MARKET_TYPE",
+                    "maxValues": 0,
+                    "skipValues": 0,
+                    "applyNextTo": 0
+                }
+            ],
+            "currencyCode": "AUD",
+            "locale": "en_GB"
+        }
+        if filter is not None:
+            payload_dict["filter"].update(filter)
+        payload = json.dumps(payload_dict)
+        headers = {
+            'content-type': 'application/json',
+        }
+        response = self.session.request("POST", self.EXCHANGE_API, headers=headers, data=payload)
+        response_dict = json.loads(response.text)
+
+        results = []
+        for result_dict in response_dict["facets"][0]["values"]:
+            market_type = result_dict["value"]
+            # cardinality = result_dict["cardinality"]
+            results.append(market_type)
+        return results
+
+
     def list_market_catalogue(self, filter: dict = None) -> list[dict]:
         payload_dict = {
             "filter": self.create_market_filter(),
