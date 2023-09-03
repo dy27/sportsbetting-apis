@@ -6,6 +6,9 @@ This code implements a reverse-engineered Betfair API, providing direct access t
 Example usage can be found in the examples folder: [examples/betfair_example.ipynb](examples/betfair_example.ipynb)
 
 
+## TAB API
+- Currently in progress and non-functional
+
 ## Todo:
 - Implement API for TAB
 - Implement a Selenium-based interface for Bet365
